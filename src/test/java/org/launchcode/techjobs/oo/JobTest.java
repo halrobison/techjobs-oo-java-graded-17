@@ -40,4 +40,37 @@ public class JobTest {
         assertNotEquals(jobEqualityTest1.getId(), jobEqualityTest2.getId());
         assertFalse(jobEqualityTest1.equals(jobEqualityTest2));
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job jobNewlineTest1 = new Job();
+        String expected = System.lineSeparator() +
+                "ID:  1" + System.lineSeparator() +
+                "Name: null" + System.lineSeparator() +
+                "Employer: null" + System.lineSeparator() +
+                "Location: null" + System.lineSeparator() +
+                "Position Type: null" + System.lineSeparator() +
+                "Core Competency: null" + System.lineSeparator();
+        assertEquals(expected, jobNewlineTest1.toString());
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job jobNewlineTest1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String expected = System.lineSeparator() +
+                "ID:  1" + System.lineSeparator() +
+                "Name: Product tester" + System.lineSeparator() +
+                "Employer: ACME" + System.lineSeparator() +
+                "Location: Desert" + System.lineSeparator() +
+                "Position Type: Quality control" + System.lineSeparator() +
+                "Core Competency: Persistence" + System.lineSeparator();
+        assertEquals(expected, jobNewlineTest1.toString());
+    }
+
+    // start back up here!
+    @Test
+    public void testToStringHandlesEmptyField() {
+
+    }
+
 }
