@@ -45,12 +45,12 @@ public class JobTest {
     public void testToStringStartsAndEndsWithNewLine() {
         Job jobNewlineTest1 = new Job();
         String expected = System.lineSeparator() +
-                "ID:  1" + System.lineSeparator() +
-                "Name: null" + System.lineSeparator() +
-                "Employer: null" + System.lineSeparator() +
-                "Location: null" + System.lineSeparator() +
-                "Position Type: null" + System.lineSeparator() +
-                "Core Competency: null" + System.lineSeparator();
+                "ID: " + jobNewlineTest1.getId() + System.lineSeparator() +
+                "Name: Data not available" + System.lineSeparator() +
+                "Employer: Data not available" + System.lineSeparator() +
+                "Location: Data not available" + System.lineSeparator() +
+                "Position Type: Data not available" + System.lineSeparator() +
+                "Core Competency: Data not available" + System.lineSeparator();
         assertEquals(expected, jobNewlineTest1.toString());
     }
 
@@ -58,7 +58,7 @@ public class JobTest {
     public void testToStringContainsCorrectLabelsAndData() {
         Job jobNewlineTest1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String expected = System.lineSeparator() +
-                "ID:  1" + System.lineSeparator() +
+                "ID: " + jobNewlineTest1.getId() + System.lineSeparator() +
                 "Name: Product tester" + System.lineSeparator() +
                 "Employer: ACME" + System.lineSeparator() +
                 "Location: Desert" + System.lineSeparator() +
@@ -70,7 +70,15 @@ public class JobTest {
     // start back up here!
     @Test
     public void testToStringHandlesEmptyField() {
-
+        Job jobNewlineTest1 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType(""), new CoreCompetency("Persistence"));
+        String expected = System.lineSeparator() +
+                "ID: " + jobNewlineTest1.getId() + System.lineSeparator() +
+                "Name: Product tester" + System.lineSeparator() +
+                "Employer: Data not available" + System.lineSeparator() +
+                "Location: Desert" + System.lineSeparator() +
+                "Position Type: Data not available" + System.lineSeparator() +
+                "Core Competency: Persistence" + System.lineSeparator();
+        assertEquals(expected, jobNewlineTest1.toString());
     }
 
 }
